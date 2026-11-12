@@ -46,19 +46,25 @@ Usamos sudo lsblk para ver el volumen asociado.
 
 Configuramos al disco el sistema de archivo de Linux (ext4).
 
+`sudo mkfs -t ext4 /dev/nvme1n1`
+
 ![](EBS-Práctica---Rafa-Moreno-images/image5.png)
 
 Montamos en la carpeta /mnt y generamos la carpeta webRMR.
+
+`sudo mount /sev/nvme1n1 /mnt`
+
+`sudo mkdir /mnt/webRMR`
 
 ![](EBS-Práctica---Rafa-Moreno-images/image6.png)
 
 ## 4. Configurar el disco autoarrancable
 
-Usamos sudo blkid para ver su identificador (UUID).
+Usamos `sudo blkid` para ver su identificador (UUID).
 
 ![](EBS-Práctica---Rafa-Moreno-images/image7.png)
 
-Añadimos en el fichero /etc/fstab/ la línea UUID=cac49809-b7c0-4ef0-9501-a0e05dad237f /mnt ext4 defaults,nofail 0 2 con el UUID del disco.
+Añadimos en el fichero /etc/fstab/ la línea `UUID=cac49809-b7c0-4ef0-9501-a0e05dad237f /mnt ext4 defaults,nofail 0 2` con el UUID del disco.
 
 ![](EBS-Práctica---Rafa-Moreno-images/image8.png)
 
@@ -88,7 +94,7 @@ Podemos ver con lsblk, que se ha realizado el cambio, pero si usamos df –h pod
 
 ![](EBS-Práctica---Rafa-Moreno-images/image11.png)
 
-Usando sudo resize2fs /dev/nvme1n1 redimensionamos el disco para que ocupe el espacio real, con df –h comprobamos que usa todo el disco.
+Usando `sudo resize2fs /dev/nvme1n1` redimensionamos el disco para que ocupe el espacio real, con `df –h` comprobamos que usa todo el disco.
 
 ![](EBS-Práctica---Rafa-Moreno-images/image12.png)
 
@@ -111,5 +117,11 @@ Comprobamos que el volumen está asociado:
 ![](EBS-Práctica---Rafa-Moreno-images/image16.png)
 
 Creamos la carpeta /home/Ubuntu y montamos la copia, comprobamos que dentro de la carpeta está la carpeta webRMR, lo que quiere decir que se copió el volumen correctamente.
+
+`sudo mkdir /home/Ubuntu`
+
+`sudo mount /dev/nvme2n1 /home/Ubuntu`
+
+`ls /home/Ubuntu` (muestra webRMR)
 
 ![](EBS-Práctica---Rafa-Moreno-images/image17.png)
