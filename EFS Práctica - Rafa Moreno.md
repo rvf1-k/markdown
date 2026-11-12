@@ -56,6 +56,8 @@ Con df –h , comprobamos que está montado.
 
 # 2. Montaje auto arrancable
 
+		
+
 Para que el EFS se monte automáticamente en el fichero /etc/fstab añadimos lo siguiente:
 
 \[fs-XXXXXXXX\].efs.\[REGION\].amazonaws.com:/ /path/to/mount/dir nfs4 defaults,\_netdev 0 0
