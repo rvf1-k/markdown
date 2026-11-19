@@ -1,4 +1,4 @@
-# AWS RDS — Chuleta de repaso
+# AWS RDS
 
 ## ¿Qué es RDS?
 
